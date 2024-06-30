@@ -7,8 +7,7 @@ app.use(express.json());
 app.use("/api/products", ProductRoute);
 
 app.get('/', (req: Request, res:Response) => {
-  res.send('Hey welcome all you to  azir  araf anas World!')
+  res.send('Hey welcome all you  World!')
 })
-
-
 export default app;
+
