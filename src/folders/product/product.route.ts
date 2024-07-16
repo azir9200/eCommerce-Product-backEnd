@@ -16,11 +16,12 @@
 // export const ProductRoute = router;
 import express from "express";
 import { ProductController } from "./product.controller";
+import { createProductValidationSchema, productValidation } from "./productValidation";
 
 
 const router = express.Router();
 
-router.post("/", ProductController.createProduct);
+router.post("/",ProductController.createProduct);
 
 router.get("/", ProductController.getAllMovies);
 

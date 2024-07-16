@@ -1,7 +1,6 @@
 # Sports Facility Booking Platform
 
 ## Story
-
 Once upon a time in a bustling city, there was Alex, a sports lover with a big dream. He wanted to create a simple way for people to book sports facilities hassle-free. With his trusty team of developers, they set out to make this dream a reality.
 
 Using TypeScript, Express.js, and Mongoose, they built the backbone of their platform. They created models for users, facilities, and bookings, making sure to include all the necessary details.
@@ -13,75 +12,105 @@ But it wasn't all smooth sailing. They encountered challenges along the way, lik
 After months of hard work, their platform was finally ready. People could now book sports facilities with just a few clicks. Alex and his team celebrated their success, proud of what they had accomplished together. And so, their simple idea turned into a solution that made a big difference in the world of sports.
 
 ---
+  
 
 You are tasked with developing the backend for a sports facility booking platform. This assignment focuses on implementing the following key functionalities: Error Handling, CRUD operations, Authentication & Authorization, and Transaction & Rollback if needed.
 
+  
+
 ## Technology Stack:
 
-- **Programming Language**: TypeScript
-- **Web Framework**: Express.js
-- **ODM & Validation Library**: Mongoose for MongoDB
+*   **Programming Language**: TypeScript
+*   **Web Framework**: Express.js
+*   **ODM & Validation Library**: Mongoose for MongoDB
+
+  
 
 ## Main Requirements (50 Marks)
 
+  
+
 ### Models:
+
+  
 
 **User Model:**
 
-- `name`: The name of the user.
-- `email`: The contact email address.
-- `password`: The account password (must be hashed).
-- `phone`: The contact phone number.
-- `role`: The role of the user (can be 'admin' or 'user').
-- `address`: The physical address.
+*   `name`: The name of the user.
+*   `email`: The contact email address.
+*   `password`: The account password (must be hashed).
+*   `phone`: The contact phone number.
+*   `role`: The role of the user (can be 'admin' or 'user').
+*   `address`: The physical address.
+
+  
 
 **Facility Model:**
 
-- `name`: The title of the facility.
-- `description`: A brief description of the facility.
-- `pricePerHour`: The cost of booking the facility per hour.
-- `location`: The physical location of the facility.
-- `isDeleted`: Boolean indicating if the facility is marked as deleted (false means not deleted).
+*   `name`: The title of the facility.
+*   `description`: A brief description of the facility.
+*   `pricePerHour`: The cost of booking the facility per hour.
+*   `location`: The physical location of the facility.
+*   `isDeleted`: Boolean indicating if the facility is marked as deleted (false means not deleted).
+
+  
 
 **Booking Model:**
 
-- `date`: The date of the booking.
-- `startTime`: The start time of the booking.
-- `endTime`: The end time of the booking.
-- `user`: Reference to the user who made the booking.
-- `facility`: Reference to the booked facility.
-- `payableAmount`: The calculated amount payable for the booking.
-- `isBooked`: Status of the booking (confirmed, unconfirmed, or canceled).
+*   `date`: The date of the booking.
+*   `startTime`: The start time of the booking.
+*   `endTime`: The end time of the booking.
+*   `user`: Reference to the user who made the booking.
+*   `facility`: Reference to the booked facility.
+*   `payableAmount`: The calculated amount payable for the booking.
+*   `isBooked`: Status of the booking (confirmed, unconfirmed, or canceled).
+
+  
 
 ### Payable Amount Calculation:
 
+  
+
 Formula:
+
+  
 
 ```plain
 payableAmount = (endTime - startTime) * pricePerHour
 ```
 
+  
+
 Assume `endTime` and `startTime` are datetime objects and `pricePerHour` is a numeric value representing the cost per hour.
+
+  
 
 **Example:**
 
-- Facility's price per hour: 20 TK
-- Booking start time: 10:00 AM
-- Booking end time: 1:00 PM
+*   Facility's price per hour: 20 TK
+*   Booking start time: 10:00 AM
+*   Booking end time: 1:00 PM
+
+  
 
 Calculation:
 
-- Duration: 3 hours
-- Payable amount: 3 hours \* 20 TK/hour = 60 TK
+*   Duration: 3 hours
+*   Payable amount: 3 hours \* 20 TK/hour = 60 TK
+
+  
 
 ### API Endpoints
 
+  
+
 #### User Routes
 
-1. **User Sign Up**
+  
 
-- **Route**: `POST /api/auth/signup`
-- **Request Body**:
+1. **User Sign Up**
+*   **Route**: `POST /api/auth/signup`
+*   **Request Body**:
 
 ```json
 {
@@ -94,8 +123,7 @@ Calculation:
 }
 ```
 
-- **Response:**
-
+* **Response:**
 ```json
 {
   "success": true,
@@ -113,9 +141,8 @@ Calculation:
 ```
 
 2. **User Login**
-
-- **Route**: `POST /api/auth/login`
-- **Request Body**:
+*   **Route**: `POST /api/auth/login`
+*   **Request Body**:
 
 ```json
 {
@@ -124,8 +151,7 @@ Calculation:
 }
 ```
 
-- **Response:**
-
+* **Response:**
 ```json
 {
   "success": true,
@@ -143,10 +169,12 @@ Calculation:
 }
 ```
 
-3. **Create a Facility (Admin Only)**
+  
 
-- **Route**: `POST /api/facility`
-- **Headers**:
+
+3. **Create a Facility (Admin Only)**
+*   **Route**: `POST /api/facility`
+*   **Headers**:
 
 ```plain
 Authorization: Bearer JWT_TOKEN
@@ -177,10 +205,12 @@ Authorization: Bearer JWT_TOKEN
 }
 ```
 
-4. **Update a Facility (Admin Only)**
 
-- **Route**: `PUT /api/facility/:id`
-- **Headers**:
+  
+
+4. **Update a Facility (Admin Only)**
+*   **Route**: `PUT /api/facility/:id`
+*   **Headers**:
 
 ```plain
 Authorization: Bearer JWT_TOKEN
@@ -195,8 +225,7 @@ Authorization: Bearer JWT_TOKEN
 }
 ```
 
-- **Response**
-
+* **Response**
 ```json
 {
   "success": true,
@@ -214,15 +243,14 @@ Authorization: Bearer JWT_TOKEN
 ```
 
 5. **Delete a Facility - Soft Delete (Admin Only)**
-
-- **Route**: `DELETE /api/facility/:id`
-- **Headers**:
+*   **Route**: `DELETE /api/facility/:id`
+*   **Headers**:
 
 ```plain
       Authorization: Bearer JWT_TOKEN
 ```
 
-- **Response**:
+*   **Response**:
 
 ```json
 {
@@ -230,20 +258,21 @@ Authorization: Bearer JWT_TOKEN
   "statusCode": 200,
   "message": "Facility deleted successfully",
   "data": {
-    "_id": "60d9c4e4f3b4b544b8b8d1c5",
-    "name": "Updated Tennis Court",
-    "description": "Updated outdoor tennis court with synthetic surface.",
-    "pricePerHour": 35,
-    "location": "789 Sports Ave, Springfield",
-    "isDeleted": true
-  }
+      "_id": "60d9c4e4f3b4b544b8b8d1c5",
+      "name": "Updated Tennis Court",
+      "description": "Updated outdoor tennis court with synthetic surface.",
+      "pricePerHour": 35,
+      "location": "789 Sports Ave, Springfield",
+      "isDeleted": true
+    }
 }
+
 ```
 
 **6\. Get All Facilities**
 
-- **Route**: `GET /api/facility`
-- **Response**:
+*  **Route**: `GET /api/facility`
+*  **Response**:
 
 ```json
 {
@@ -263,29 +292,32 @@ Authorization: Bearer JWT_TOKEN
 }
 ```
 
+  
+
 #### Booking Routes
 
+  
 ### 7\. Check Availability
 
 Check the availability of time slots for booking on a specific date.
 
-- **Route**: `GET /api/check-availability`
+*   **Route**: `GET /api/check-availability`
 
 #### Query Parameters
 
-- **date** (`string`, optional): The date for which availability is to be checked. Format: `YYYY-MM-DD`. If not provided, today's date will be used by default.
+*   **date** (`string`, optional): The date for which availability is to be checked. Format: `YYYY-MM-DD`. If not provided, today's date will be used by default.
 
 #### Response
 
-- **success** (`boolean`): Indicates whether the request was successful.
-- **statusCode** (`number`): HTTP status code of the response.
-- **message** (`string`): Descriptive message indicating the outcome of the request.
-- **data** (`Array` of `Object`): Array containing information about available time slots.
+  *   **success** (`boolean`): Indicates whether the request was successful.
+  *   **statusCode** (`number`): HTTP status code of the response.
+  *   **message** (`string`): Descriptive message indicating the outcome of the request.
+  *   **data** (`Array` of `Object`): Array containing information about available time slots.
 
 ##### Time Slot Object
 
-- **startTime** (`string`): The start time of the available slot.
-- **endTime** (`string`): The end time of the available slot.
+  *   **startTime** (`string`): The start time of the available slot.
+  *   **endTime** (`string`): The end time of the available slot.
 
 #### Example Request
 
@@ -301,29 +333,35 @@ GET /api/check-availability?date=2024-06-15
   "statusCode": 200,
   "message": "Availability checked successfully",
   "data": [
-    {
-      "startTime": "08:00",
-      "endTime": "10:00"
-    },
-    {
-      "startTime": "14:00",
-      "endTime": "16:00"
-    }
-  ]
+      {
+          "startTime": "08:00",
+          "endTime": "10:00"
+      },
+      {
+          "startTime": "14:00",
+          "endTime": "16:00"
+      }
+   ]
 }
 ```
 
+  
+
 **Hints**:
 
-- Parse the optional `date` query parameter from the request URL. If not provided, use today's date.
-- Retrieve bookings for the specified date from your database using Mongoose.
-- Define a function to find available time range based on the bookings retrieved. Compare booked time range to the total available time slots for the day.
-- Return a response containing the available time slots in the specified format. Use `res.json()` to send the response.
+*   Parse the optional `date` query parameter from the request URL. If not provided, use today's date.
+*   Retrieve bookings for the specified date from your database using Mongoose.
+*   Define a function to find available time range based on the bookings retrieved. Compare booked time range to the total available time slots for the day.
+*   Return a response containing the available time slots in the specified format. Use `res.json()` to send the response.
+
+  
+
+  
 
 **8\. Create a Booking (User Only)**
 
-- **Route**: `POST /api/bookings`
-- **Headers**:
+  *   **Route**: `POST /api/bookings`
+  *   **Headers**:
 
 ```plain
 Authorization: Bearer JWT_TOKEN
@@ -337,9 +375,7 @@ Authorization: Bearer JWT_TOKEN
   "endTime": "13:00"
 }
 ```
-
-- **Response:**
-
+* **Response:**
 ```json
 {
   "success": true,
@@ -362,15 +398,14 @@ Authorization: Bearer JWT_TOKEN
 
 **9\. View All Bookings (Admin Only)**
 
-- **Route**: `GET /api/bookings`
-- **Headers**:
+  *   **Route**: `GET /api/bookings`
+  *   **Headers**:
 
 ```plain
 Authorization: Bearer JWT_TOKEN
 ```
 
-- **Response:**
-
+* **Response:**
 ```json
 {
   "success": true,
@@ -407,8 +442,8 @@ Authorization: Bearer JWT_TOKEN
 
 **10\. View Bookings by User (User Only)**
 
-- **Route**: `GET /api/bookings/user`
-- **Headers**:
+  *   **Route**: `GET /api/bookings/user`
+  *   **Headers**:
 
 ```plain
 Authorization: Bearer JWT_TOKEN
@@ -443,8 +478,8 @@ Authorization: Bearer JWT_TOKEN
 
 **11\. Cancel a Booking (User Only)**
 
-- **Route**: `DELETE /api/bookings/:id`
-- **Headers**:
+  *   **Route**: `DELETE /api/bookings/:id`
+  *   **Headers**:
 
 ```plain
 Authorization: Bearer JWT_TOKEN
@@ -456,24 +491,26 @@ Authorization: Bearer JWT_TOKEN
   "statusCode": 200,
   "message": "Booking cancelled successfully",
   "data": {
-    "_id": "60d9c4e4f3b4b544b8b8d1c6",
-    "facility": {
-      "_id": "60d9c4e4f3b4b544b8b8d1c5",
-      "name": "Tennis Court",
-      "description": "Outdoor tennis court with professional-grade surface.",
-      "pricePerHour": 30,
-      "location": "123 Main Street",
-      "isDeleted": false
-    },
-    "date": "2024-06-15",
-    "startTime": "10:00",
-    "endTime": "13:00",
-    "user": "60d9c4e4f3b4b544b8b8d1c4",
-    "payableAmount": 90,
-    "isBooked": "canceled"
-  }
+      "_id": "60d9c4e4f3b4b544b8b8d1c6",
+      "facility": {
+        "_id": "60d9c4e4f3b4b544b8b8d1c5",
+        "name": "Tennis Court",
+        "description": "Outdoor tennis court with professional-grade surface.",
+        "pricePerHour": 30,
+        "location": "123 Main Street",
+        "isDeleted": false
+      },
+      "date": "2024-06-15",
+      "startTime": "10:00",
+      "endTime": "13:00",
+      "user": "60d9c4e4f3b4b544b8b8d1c4",
+      "payableAmount": 90,
+      "isBooked": "canceled"
+    }
 }
 ```
+
+  
 
 ## Bonus Part (10 Marks):
 
@@ -486,7 +523,7 @@ When retrieving data, if the database collection is empty or no matching data is
   "success": false,
   "statusCode": 404,
   "message": "No Data Found",
-  "data": []
+  "data":[]
 }
 ```
 
@@ -496,10 +533,12 @@ Implement proper error handling throughout the application. Use global error han
 
 **Error Response Object Should include the following properties:**
 
-- success → false
-- message → Error Type → Validation Error, Cast Error, Duplicate Entry
-- errorMessages
-- stack
+*   success → false
+*   message → Error Type → Validation Error, Cast Error, Duplicate Entry
+*   errorMessages
+*   stack
+
+  
 
 **Sample Error Response**
 
@@ -517,7 +556,7 @@ Implement proper error handling throughout the application. Use global error han
 }
 ```
 
-###
+###   
 
 ### **3\. Not Found Route:**
 
@@ -527,22 +566,21 @@ Implement a global "Not Found" handler for unmatched routes. When a route is not
 {
   "success": false,
   "statusCode": 404,
-  "message": "Not Found"
+  "message": "Not Found",
 }
 ```
 
 ### **4\. Authentication Middleware:**
 
-Implement an Authentication Middleware to authenticate your application. Ensures that only user and admin can access their own accessible routes.
+Implement an Authentication Middleware to authenticate your application. Ensures that only user  and admin can access their own accessible routes.
 
 ```json
 {
   "success": false,
   "statusCode": 401,
-  "message": "You have no access to this route"
+  "message": "You have no access to this route",
 }
 ```
 
 ### **5\. Zod Validation:**
-
 The API employs Zod for input validation, ensuring data consistency. When validation fails, a 400 Bad Request status code is returned, accompanied by detailed error messages specifying the erroneous fields and reasons.
