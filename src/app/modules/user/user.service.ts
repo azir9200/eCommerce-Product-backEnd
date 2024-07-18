@@ -16,8 +16,9 @@ const getSingleUserFromDB = async (id: string) => {
   return result;
 };
 
-const updateUserFromDB = async (id: string) => {
-  const result = await User.aggregate([{ $match: { id } }]);
+const updateUserFromDB = async (id: string, payload: Partial<TUser>) => {
+  // const result = await User.aggregate([{ $match: { id } }]);
+  const result = await User.findOneAndUpdate({ id }, payload);
   return result;
 };
 

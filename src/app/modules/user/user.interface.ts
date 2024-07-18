@@ -1,11 +1,9 @@
 export type TUser = {
-    name: string;
-    email: string;
-    password: string; // Note: This will be hashed
-    phone: string;
-    role: 'admin' | 'user';
-    address: string;
-  }
-  
-  
-  
+  id: string;
+  name: string;
+  email: string;
+  password: string; // Note: This will be hashed
+  phone: string;
+  role: "admin" | "user";
+  address: string;
+};

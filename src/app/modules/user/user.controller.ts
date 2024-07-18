@@ -17,7 +17,6 @@ const createUser = async (req: Request, res: Response) => {
 const getAllUsers = async (req: Request, res: Response) => {
   try {
     const result = await UserService.getAllUsersFromDB();
-
     res.status(200).json({
       success: true,
       message: "Users are fetched successfully !",
@@ -69,10 +68,30 @@ const deleteUser = async (req: Request, res: Response) => {
     });
   }
 };
+const updateUser = async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+    const { user } = req.body;
+    const result = await UserService.updateUserFromDB(userId, user);
+
+    res.status(200).json({
+      success: true,
+      message: "User  deleted successfully !",
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "hey Dev, Could not delete User!",
+      error: err,
+    });
+  }
+};
 
 export const UserController = {
   createUser,
   getAllUsers,
   getSingleUser,
   deleteUser,
+  updateUser,
 };

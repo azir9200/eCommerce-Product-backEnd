@@ -2,7 +2,12 @@ import { model, Schema } from "mongoose";
 import { TUser } from "./user.interface";
 
 // Create the User schema
-const UserSchema =  new Schema<TUser> ({
+const UserSchema = new Schema<TUser>({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: true,
