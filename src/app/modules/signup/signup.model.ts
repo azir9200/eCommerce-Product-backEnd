@@ -1,8 +1,8 @@
 import { model, Schema } from "mongoose";
-import { TUser } from "./user.interface";
+import { TSignup } from "./signup.interface";
 
 // Create the User schema
-const UserSchema = new Schema<TUser>({
+const SignupSchema = new Schema<TSignup>({
   id: {
     type: String,
     required: true,
@@ -36,4 +36,4 @@ const UserSchema = new Schema<TUser>({
   },
 });
 
-export const User = model<TUser>("User", UserSchema);
+export const SignupModel = model<TSignup>("Signup", SignupSchema);

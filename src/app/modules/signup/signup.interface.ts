@@ -1,4 +1,4 @@
-export type TUser = {
+export type TSignup = {
   id: string;
   name: string;
   email: string;

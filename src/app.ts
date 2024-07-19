@@ -1,13 +1,14 @@
 import express, { Request, Response } from "express";
-import { userRouter } from "./app/modules/user/user.route";
 import { facilityRouter } from "./app/modules/facility/facility.route";
+import { loginRouter } from "./app/modules/login/login.route";
+import { signupRouter } from "./app/modules/signup/signup.route";
 const app = express();
 
 app.use(express.json());
 
-// application routes
-// app.use("/api/users", userRouter);
-app.use("/api/auth", userRouter);
+app.use("/api/auth/signup", signupRouter);
+
+app.use("/api/auth/login", loginRouter);
 
 app.use("/api/facility", facilityRouter);
 
