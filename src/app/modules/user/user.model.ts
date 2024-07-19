@@ -6,7 +6,7 @@ const UserSchema = new Schema<TUser>({
   id: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   name: {
     type: String,
@@ -36,4 +36,4 @@ const UserSchema = new Schema<TUser>({
   },
 });
 
-export const User = model<TUser>("Product", UserSchema);
+export const User = model<TUser>("User", UserSchema);

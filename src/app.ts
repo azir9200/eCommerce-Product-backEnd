@@ -6,7 +6,8 @@ const app = express();
 app.use(express.json());
 
 // application routes
-app.use("/api/users", userRouter);
+// app.use("/api/users", userRouter);
+app.use("/api/auth", userRouter);
 
 app.use("/api/facility", facilityRouter);
 

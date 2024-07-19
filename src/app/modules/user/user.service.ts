@@ -11,8 +11,8 @@ const getAllUsersFromDB = async () => {
   return result;
 };
 
-const getSingleUserFromDB = async (id: string) => {
-  const result = await User.findOne({ id: id });
+const getSingleUserFromDB = async (_id: string) => {
+  const result = await User.findOne({ id: _id });
   return result;
 };
 

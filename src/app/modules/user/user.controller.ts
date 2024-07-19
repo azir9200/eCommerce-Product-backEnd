@@ -9,7 +9,7 @@ const createUser = async (req: Request, res: Response) => {
 
   res.json({
     success: true,
-    message: "Product is created successfully !",
+    message: "User is created successfully !",
     data: result,
   });
 };
@@ -25,7 +25,7 @@ const getAllUsers = async (req: Request, res: Response) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "Could not fetch Users!",
+      message: "From users Controller, its not fetch Users!",
       error: err,
     });
   }
@@ -33,8 +33,10 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const getSingleUser = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params;
-    const result = await UserService.getSingleUserFromDB(userId);
+    const { id } = req.params;
+    console.log(req.params, " paramss");
+    const result = await UserService.getSingleUserFromDB(id);
+    console.log(result, "iddd");
 
     res.status(200).json({
       success: true,

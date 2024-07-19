@@ -5,7 +5,7 @@ import validateRequest from "../../moddleware/validationRequest";
 
 const router = express.Router();
 
-router.post("/create-user", UserController.createUser);
+router.post("/signup", UserController.createUser);
 
 router.get("/", UserController.getAllUsers);
 
