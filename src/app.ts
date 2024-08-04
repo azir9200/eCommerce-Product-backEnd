@@ -1,7 +1,4 @@
 import express, { Request, Response } from "express";
-import { facilityRouter } from "./app/modules/facility/facility.route";
-import { loginRouter } from "./app/modules/login/login.route";
-import { signupRouter } from "./app/modules/signup/signup.route";
 import notFound from "./app/middleware/notFound";
 import globalErrorHandler from "./app/middleware/globalErrorhandler";
 import router from "./app/routes";

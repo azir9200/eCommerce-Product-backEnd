@@ -3,7 +3,7 @@ import { LoginController } from "./login.controller";
 
 const router = express.Router();
 
-router.post("/create-login", LoginController.createLogin);
+router.post("/login/create-login", LoginController.createLogin);
 
 router.get("/", LoginController.getAllLogin);
 
