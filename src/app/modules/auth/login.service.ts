@@ -30,8 +30,7 @@ const loginExistingUser = async (payload: TUserLogin) => {
   if (!isPasswordMatched) {
     throw new AppError(
       httpStatus.UNAVAILABLE_FOR_LEGAL_REASONS,
-      "You do not have the necessary permissions to access this resource.",
-      "Unauthorized Access"
+      "You do not have the necessary permissions to access this resource."
     );
   }
 
@@ -52,6 +51,19 @@ const loginExistingUser = async (payload: TUserLogin) => {
   return { user, token: accessToken };
 };
 
+const getMe = async (email: string, role: string) => {
+  let result = null;
+  if (role === "user") {
+    result = await userModel.findOne({ email: email }).populate("User");
+  }
+  if (role === "admin") {
+    result = await userModel.findOne({ email: email }).populate("User");
+  }
+
+  return result;
+};
+
 export const LoginServices = {
   loginExistingUser,
+  getMe,
 };

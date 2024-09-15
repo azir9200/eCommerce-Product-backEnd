@@ -8,6 +8,8 @@ import catchAsync from "../utils/catchAsync";
 // import { verifyToken } from "../modules/auth/auth.utils";
 import { UserRole } from "../modules/user/user.constant";
 import AppError from "../error/app.Error";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import { userModel } from "../modules/user/user.model";
 
 export const auth = (...requiredRoles: (keyof typeof UserRole)[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +25,7 @@ export const auth = (...requiredRoles: (keyof typeof UserRole)[]) => {
     );
 
     const { role, email } = verifiedToken as JwtPayload;
-    console.log(verifyToken, "very");
+    console.log(verifiedToken, "very");
     const user = await userModel.findOne({ email });
 
     if (!user) {
