@@ -13,4 +13,4 @@ router.delete("/:id", FacilityController.deleteFacility);
 
 router.patch("/:id", FacilityController.updateFacility);
 
-export const facilityRouter = router;
+export const FacilityRoutes = router;

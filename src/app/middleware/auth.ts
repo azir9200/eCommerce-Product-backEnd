@@ -6,7 +6,7 @@ import catchAsync from "../utils/catchAsync";
 // import AppError from "../errors/appError";
 // import { userModel } from "../modules/user/user.model";
 // import { verifyToken } from "../modules/auth/auth.utils";
-import { UserRole } from "../modules/signup/user.constant";
+import { UserRole } from "../modules/user/user.constant";
 import AppError from "../error/app.Error";
 
 export const auth = (...requiredRoles: (keyof typeof UserRole)[]) => {

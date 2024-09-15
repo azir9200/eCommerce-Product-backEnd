@@ -13,6 +13,3 @@ const productSchema = new Schema<TProduct>({
 });
 
 export const ProductModel = model('Product', productSchema);
-
-
-
