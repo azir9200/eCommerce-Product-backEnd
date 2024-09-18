@@ -25,7 +25,7 @@ transactionId=${paymentData.transactionId}`,
     cus_phone: paymentData.customerPhone,
     type: "json",
   });
-  //  console.log("Response", response);
+    console.log("Response", response);
   return response.data;
 };
 
